@@ -1,0 +1,3 @@
+04/01/2023:
+- Hikari connection pool to be configured properly
+- Implement caching/ indexing the data using Lucene

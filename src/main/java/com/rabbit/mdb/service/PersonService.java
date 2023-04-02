@@ -11,4 +11,6 @@ public interface PersonService {
 	Person getById(final long id) throws PersonNotFoundException, SQLException;
 
 	List<Person> listAll() throws SQLException;
+	
+	public List<Person> listAllFromCache() throws SQLException;
 }

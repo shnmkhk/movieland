@@ -20,7 +20,7 @@ public class PersonController {
 	
 	@Autowired
 	private PersonService personService;
-
+	
 	@GetMapping(path = "/{id}", produces = {"application/json"})
 	@ResponseBody
 	public Person getById(@PathVariable("id") final long id) throws PersonNotFoundException, SQLException {
@@ -31,5 +31,11 @@ public class PersonController {
 	@ResponseBody
 	public List<Person> getAll() throws SQLException {
 		return personService.listAll();
+	}
+	
+	@GetMapping(path = "/cache", produces = {"application/json"})
+	@ResponseBody
+	public List<Person> getAllFromCache() throws SQLException {
+		return personService.listAllFromCache();
 	}
 }

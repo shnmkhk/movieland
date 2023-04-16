@@ -1,0 +1,2 @@
+#!/bin/sh
+mvn compile liquibase:update package spring-boot:run

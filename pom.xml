@@ -83,7 +83,7 @@
 						src/main/resources/db/changelog/changelog-master.xml</outputChangeLogFile>
 				</configuration-->
 				<configuration>
-					<driver></driver>
+					<driver>com.mysql.cj.jdbc.Driver</driver>
 					<url>jdbc:mysql://localhost:3306/simple_development?createDatabaseIfNotExist=true</url>
 					<username>admin</username>
 					<password>passw0rd</password>

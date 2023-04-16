@@ -1,8 +1,8 @@
 # Build regular spring boot app as jar
-mvn compile spring-boot:run -Dspring.liquibase.enabled=true -f pom.xml
+mvn compile liquibase:update spring-boot:run
 
 # Build the native image
-mvn -Pnative native:compile -Dspring.liquibase.enabled=false -f native-pom.xml
+mvn liquibase:update native:compile -f native-pom.xml
 
 # Known issues
 https://github.com/spring-attic/spring-native/issues/1684

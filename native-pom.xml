@@ -9,17 +9,18 @@
 		<version>3.0.5</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.javadeveloperzone</groupId>
-	<artifactId>liquibase</artifactId>
+	<groupId>com.rabbit</groupId>
+	<artifactId>movieland</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>liquibase</name>
-	<description>Demo project for Spring Boot and Liquibase</description>
+	<name>Movie Land</name>
+	<description>One stop place for all the news and updates about Indian
+		movies, TV and OTT content</description>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<java.version>1.8</java.version>
+		<java.version>17</java.version>
 	</properties>
 
 	<dependencies>
@@ -61,6 +62,17 @@
 			<artifactId>lombok</artifactId>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.liquibase</groupId>
+			<artifactId>liquibase-core</artifactId>
+			<version>4.20.0</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.liquibase</groupId>
+					<artifactId>liquibase-commercial</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -73,6 +85,32 @@
 				<groupId>org.graalvm.buildtools</groupId>
 				<artifactId>native-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+				<groupId>org.liquibase</groupId>
+				<artifactId>liquibase-maven-plugin</artifactId>
+				<!--configuration>
+					<driver>org.h2.Driver</driver>
+					<url>jdbc:h2:file:./target/h2db/db/movieland</url>
+					<username>carapp</username>
+					<password />
+					<outputChangeLogFile>
+						src/main/resources/db/changelog/changelog-master.xml</outputChangeLogFile>
+				</configuration-->
+				<configuration>
+					<driver></driver>
+					<url>jdbc:mysql://localhost:3306/simple_development?createDatabaseIfNotExist=true</url>
+					<username>admin</username>
+					<password>passw0rd</password>
+					<changeLogFile>src/main/resources/db/changelog/changelog-master.xml</changeLogFile>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
+	<repositories>
+		<repository>
+			<id>spring-repo</id>
+			<url>https://repo.spring.io/release/</url>
+		</repository>
+	</repositories>
+
 </project>

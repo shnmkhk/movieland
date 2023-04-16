@@ -19,7 +19,7 @@ public class PersonDAOImpl extends BaseDAOImpl implements PersonDAO {
 	@Override
 	public Person getById(long id) throws PersonNotFoundException, SQLException {
 		try (Connection conn = dataSource().getConnection();
-				Statement statement = conn.createStatement(ResultSet.FETCH_FORWARD, ResultSet.CONCUR_READ_ONLY);
+				Statement statement = conn.createStatement(ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_READ_ONLY);
 				ResultSet rs = statement
 						.executeQuery(String.format("select id, name, address from person where id=%d", id))) {
 			if (!rs.next())
@@ -33,7 +33,7 @@ public class PersonDAOImpl extends BaseDAOImpl implements PersonDAO {
 	public List<Person> listAll() throws SQLException {
 		List<Person> allList = new ArrayList<>();
 		try (Connection conn = dataSource().getConnection();
-				Statement statement = conn.createStatement(ResultSet.FETCH_FORWARD, ResultSet.CONCUR_READ_ONLY);
+				Statement statement = conn.createStatement(ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_READ_ONLY);
 				ResultSet rs = statement.executeQuery(String.format("select id, name, address from person"))) {
 			while (rs.next())
 				allList.add(new Person(rs.getLong("ID"), rs.getString("NAME"), rs.getString("ADDRESS")));

@@ -35,3 +35,6 @@ sudo service docker start
 sudo docker run hello-world
 
 # https://docs.oracle.com/en/graalvm/enterprise/22/docs/reference-manual/native-image/guides/use-native-image-maven-plugin/
+
+sudo chmod 666 /var/run/docker.sock
+docker run hello-world

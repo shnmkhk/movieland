@@ -34,3 +34,4 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin 
 sudo service docker start
 sudo docker run hello-world
 
+# https://docs.oracle.com/en/graalvm/enterprise/22/docs/reference-manual/native-image/guides/use-native-image-maven-plugin/
